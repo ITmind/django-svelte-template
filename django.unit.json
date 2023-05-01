@@ -1,0 +1,39 @@
+{
+  "listeners": {
+    "*:8000": {
+      "pass": "routes"
+    }
+  },
+  "routes": [
+    {
+      "match": {
+        "uri": "/static/*"
+      },
+      "action": {
+        "share": "/app$uri"
+      }
+    },
+    {
+      "match": {
+        "uri": "/media/*"
+      },
+      "action": {
+        "share": "/app$uri"
+      }
+    },
+    {
+      "action": {
+        "pass": "applications/django"
+      }
+    }
+  ],
+  "applications": {
+    "django": {
+      "type": "python 3",
+      "processes": 4,
+      "threads": 4,
+      "path": "/app/",
+      "module": "django_svelte_template.wsgi"
+    }
+  }
+}

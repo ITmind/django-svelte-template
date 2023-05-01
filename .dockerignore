@@ -1,0 +1,11 @@
+.venv
+.git
+.gitignore
+.dockerignore
+docker-compose.yml
+Dockerfile
+svelte_app
+data
+.idea
+venv
+Readme.MD
