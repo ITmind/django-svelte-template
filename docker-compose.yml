@@ -11,6 +11,7 @@ services:
     ports:
       - "5432:5432"
 
+#  раскомментировать, если хотим смотреть таблицы
 #  adminer:
 #    image: adminer
 #    restart: always

@@ -1,12 +1,10 @@
 <script>
     import {onMount} from "svelte";
 
-    let notes = [...Array(10).keys()].map(() => {
+    let notes = [...Array(3).keys()].map(() => {
         return {date:'', title:''}
     });
-    let curentNote = {note: ''};
-
-    let editMode = false;
+    let currentNote = {note: ''};
 
     onMount(readTable);
 
@@ -50,16 +48,16 @@
     }
 
     function onSelectRow(note){
-        if(curentNote !== note) {
+        if(currentNote !== note) {
             notes.map((value) => saveNote(value));
-            curentNote = note;
+            currentNote = note;
             notes = notes;
         }
     }
 
     function onEditClick(event, note){
         note["edit"] = true;
-        curentNote = note;
+        currentNote = note;
         notes = notes;
         event.stopPropagation();
     }
@@ -101,10 +99,10 @@
     </tbody>
 </table>
 
-{#if curentNote.edit}
-    <input class="note editable" bind:value={curentNote.note}>
+{#if currentNote.edit}
+    <input class="note editable" bind:value={currentNote.note}>
 {:else}
-    <div class="note noteditable">{curentNote.note}</div>
+    <div class="note noteditable">{currentNote.note}</div>
 {/if}
 
 <style>

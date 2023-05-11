@@ -4,14 +4,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    {# относительный путь к иконке сайта #}
     <link rel="icon" type="image/svg+xml" href="{% static 'spa/svelte.svg' %}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Django + Svelte</title>
+    {# относительный путь к главному js файлу, содержащему SPA #}
     <script type="module" crossorigin src={% static 'spa/index.js' %}></script>
+    {# относительный путь к стилям SPA #}
     <link rel="stylesheet" href={% static 'spa/index.css' %}>
 </head>
 <body>
+
+{# тег crsf token нужен для того, что бы токен передался в заголовке. Токен нужн для POST запросов из SPA #}
 {% csrf_token %}
+
+{# в данном теге отобазиться Svelte #}
 <div id="app"></div>
 
 </body>
