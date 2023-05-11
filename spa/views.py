@@ -1,6 +1,6 @@
 import json
 
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views import generic
 from django.views.decorators.cache import never_cache
@@ -42,7 +42,11 @@ def save(request):
     :param request: контекст запроса (подставляет Django)
     :return: возвращает ответ об окончании записи в БД
     """
-    body = json.loads(request.body)
+    try:
+        body = json.loads(request.body)
+    except Exception as ex:
+        return HttpResponseBadRequest(ex)
+
     try:
         note = Notes.objects.get(pk=body['date'])
     except Notes.DoesNotExist:
