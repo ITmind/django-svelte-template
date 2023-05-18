@@ -14,7 +14,7 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Django + Svelte</h1>
+  <h1>Django + Vite + Svelte</h1>
 
   <div class="notes">
     <Notes />

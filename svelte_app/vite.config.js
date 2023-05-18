@@ -8,9 +8,9 @@ export default defineConfig({
     base: "/static/spa",
     build: {
         //сюда будем выкладывать артефакты
-        outDir: "../static/spa",
+        outDir: "./dist/spa",
         //сюда картинки и прочее midia
-        assetsDir: './assets',
+        //assetsDir: './assets',
 
         rollupOptions: {
             output: {
